@@ -29,6 +29,7 @@ window.STORY = {
   ],
 
   spine: [
+    "proloog",
     "de aanloop",
     "de opening",
     "de tafels",
@@ -38,15 +39,36 @@ window.STORY = {
   ],
 
   scenes: [
+    /* ───────────────────────── 00 ───────────────────────── */
+    {
+      id: "proloog",
+      kicker: "00",
+      eyebrow: "Proloog",
+      title: "d'n Ouden Geurtbot",
+      art: "assets/cards/genaaid.jpg",
+      artAlt: "Joker-kaart 'genaaid'",
+      artCaption: "† 28 november 2022 — hij werd 6,5 jaar.",
+      prose: [
+        "[Op 28 november 2022 blies d'n Ouden Geurtbot zijn laatste adem uit. Hij werd 6,5 jaar. Toch vrij oud voor een bot.]",
+        "[SCHRIJF HIER: wat deed de oude bot, en waarom duurde het tot 2026 voor er een opvolger kwam?]",
+      ],
+      facts: [
+        { value: "28 nov 2022", label: "Laatste adem" },
+        { value: "6,5 jaar", label: "Leeftijd" },
+        { value: "Vrij oud", label: "Voor een bot" },
+        { value: "2026", label: "Terug van weggeweest" },
+      ],
+    },
+
     /* ───────────────────────── 01 ───────────────────────── */
     {
       id: "begin",
       kicker: "01",
       eyebrow: "Het begin",
-      title: "Eén kaartspel in een chatgroep",
+      title: "HIGHCARDJE",
       art: "assets/cards/AS.png",
       artAlt: "Aas van schoppen",
-      artCaption: "Alles begon met 52 kaarten en veel te veel /join.",
+      artCaption: "Terug van weggeweest",
       prose: [
         "[SCHRIJF HIER: de allereerste avond — 10 juni 2026. Highcardje, /join, kaarten die één voor één omdraaiden, en het besef dat dit wel eens uit de hand kon lopen.]",
         "[SCHRIJF HIER: waarom begon het? Een grap, een weddenschap, verveling? Noem de aanleiding.]",
