@@ -72,7 +72,7 @@ window.STORY = {
         {
           type: "text",
           text: "Op 28 november 2022 blies d'n Ouden Geurtbot zijn laatste adem uit. Hij werd 6,5 jaar. Toch vrij oud voor een bot.",
-          size: "long",
+          size: "short",
         },
         {
           type: "text",
