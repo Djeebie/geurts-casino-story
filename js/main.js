@@ -8,6 +8,7 @@
     return;
   }
 
+  var FX = window.Effects || { entry: function () {}, clickExplosion: function () {}, sparkleBurst: function () {}, reduced: true };
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   function el(tag, className, text) {
@@ -28,12 +29,33 @@
     });
   }
 
+  function makeClickable(node, kind) {
+    node.setAttribute("data-egg", kind);
+    node.setAttribute("role", "button");
+    node.setAttribute("tabindex", "0");
+    node.setAttribute("title", "Klik voor een verrassing");
+    function fire() {
+      FX.clickExplosion(node, kind);
+    }
+    node.addEventListener("click", fire);
+    node.addEventListener("keydown", function (e) {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        fire();
+      }
+    });
+  }
+
   function addFacts(container, facts) {
     if (!facts || !facts.length) return;
     var grid = el("ul", "facts");
     facts.forEach(function (f) {
       var li = el("li", "fact");
-      li.appendChild(el("span", "fact__pip", "♦"));
+      if (f.celebrate) li.classList.add("fact--celebrate");
+      if (f.egg) makeClickable(li, f.egg);
+      var pip = el("span", "fact__pip");
+      pip.setAttribute("aria-hidden", "true");
+      li.appendChild(pip);
       li.appendChild(el("span", "fact__value", f.value));
       li.appendChild(el("span", "fact__label", f.label));
       grid.appendChild(li);
@@ -64,15 +86,16 @@
   /* ── Scènes ─────────────────────────────────────────── */
   var story = document.getElementById("story");
   var spine = STORY.spine || [];
+  var sceneNodes = [];
 
   (STORY.scenes || []).forEach(function (scene, index) {
-    var section = el("section", "scene");
+    var section = el("section", "scene theme--" + (scene.theme || "klassiek"));
     section.id = "scene-" + scene.id;
     section.setAttribute("data-index", String(index));
+    section.setAttribute("data-theme", scene.theme || "klassiek");
 
     var inner = el("div", "scene__inner");
 
-    /* Kunstwerk */
     if (scene.art) {
       var artWrap = el("figure", "scene__art");
       var img = document.createElement("img");
@@ -81,13 +104,12 @@
       img.loading = "lazy";
       artWrap.appendChild(img);
       if (scene.artCaption) {
-        var cap = el("figcaption", "scene__caption", scene.artCaption);
-        artWrap.appendChild(cap);
+        artWrap.appendChild(el("figcaption", "scene__caption", scene.artCaption));
       }
+      if (scene.artEgg) makeClickable(artWrap, scene.artEgg);
       inner.appendChild(artWrap);
     }
 
-    /* Tekst */
     var body = el("div", "scene__body");
     var meta = el("div", "scene__meta");
     meta.appendChild(el("span", "scene__kicker", scene.kicker || ""));
@@ -100,6 +122,7 @@
 
     section.appendChild(inner);
     story.appendChild(section);
+    sceneNodes.push({ node: section, scene: scene });
   });
 
   /* ── Outro ──────────────────────────────────────────── */
@@ -124,8 +147,7 @@
     var a = el("a", "rail__dot");
     a.href = "#" + section.id;
     a.setAttribute("aria-label", sceneData.eyebrow || "Hoofdstuk " + (i + 1));
-    var label = el("span", "rail__label", sceneData.eyebrow || sceneData.title || "");
-    a.appendChild(label);
+    a.appendChild(el("span", "rail__label", sceneData.eyebrow || sceneData.title || ""));
     a.addEventListener("click", function (e) {
       e.preventDefault();
       section.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
@@ -134,7 +156,7 @@
     return a;
   });
 
-  /* ── Reveal + actieve sectie ────────────────────────── */
+  /* ── Reveal ─────────────────────────────────────────── */
   if ("IntersectionObserver" in window && !reduceMotion) {
     var revealObserver = new IntersectionObserver(
       function (entries) {
@@ -152,11 +174,56 @@
       revealObserver.observe(n);
     });
   } else {
-    document.querySelectorAll(".reveal").forEach(function (n) {
-      n.classList.add("is-visible");
+    document.querySelectorAll(".scene, .hero__inner, .outro__inner").forEach(function (n) {
+      n.classList.add("reveal", "is-visible");
     });
   }
 
+  /* ── Entry-effecten (één keer per scène) ────────────── */
+  if ("IntersectionObserver" in window && !FX.reduced) {
+    var effectObserver = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            var idx = Number(entry.target.getAttribute("data-index"));
+            var data = sceneNodes[idx];
+            if (data && data.scene.entry) {
+              FX.entry(data.scene.entry, entry.target);
+            }
+            effectObserver.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.4 }
+    );
+    sceneNodes.forEach(function (s) {
+      effectObserver.observe(s.node);
+    });
+  }
+
+  /* ── Sparkle op feitkaarten ─────────────────────────── */
+  var sparkleCards = Array.prototype.slice.call(document.querySelectorAll(".fact--celebrate"));
+  if (sparkleCards.length) {
+    if ("IntersectionObserver" in window && !FX.reduced) {
+      var sparkleObserver = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-sparkling");
+              FX.sparkleBurst(entry.target);
+              sparkleObserver.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.6 }
+      );
+      sparkleCards.forEach(function (c) {
+        sparkleObserver.observe(c);
+      });
+    }
+  }
+
+  /* ── Actieve sectie (rail) ──────────────────────────── */
   if ("IntersectionObserver" in window) {
     var activeObserver = new IntersectionObserver(
       function (entries) {

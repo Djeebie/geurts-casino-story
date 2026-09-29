@@ -7,6 +7,17 @@
  * - Feitkaarten staan onder `facts` ({ value, label }).
  * - Een nieuw hoofdstuk toevoegen? Kopieer een heel scène-object
  *   hieronder en plak het ervoor/ertussen. De site regelt de rest.
+ *
+ * Optionele velden per scène:
+ *   theme: "memoriam" | "klassiek" | "neon" | "highroller" |
+ *          "arcade" | "glitch" | "blueprint"   (default: klassiek)
+ *   entry: welk effect bij binnenkomst: "confetti" | "dust" | "neon" |
+ *          "gold" | "arcade" | "explosion" | "blueprint"
+ *   artEgg: "dust" | "boom" | "gold"  → klik op de afbeelding
+ *
+ * Optionele velden per feitkaart:
+ *   celebrate: true   → sparkle-animatie bij zichtbaar worden
+ *   egg: "gold"       → klik geeft een gouden confetti-explosie
  */
 
 window.STORY = {
@@ -43,6 +54,9 @@ window.STORY = {
     {
       id: "proloog",
       kicker: "00",
+      theme: "memoriam",
+      entry: "dust",
+      artEgg: "dust",
       eyebrow: "Proloog",
       title: "d'n Ouden Geurtbot",
       art: "assets/cards/genaaid.jpg",
@@ -64,6 +78,8 @@ window.STORY = {
     {
       id: "begin",
       kicker: "01",
+      theme: "klassiek",
+      entry: "confetti",
       eyebrow: "Het begin",
       title: "HIGHCARDJE",
       art: "assets/cards/AS.png",
@@ -85,6 +101,8 @@ window.STORY = {
     {
       id: "opening",
       kicker: "02",
+      theme: "neon",
+      entry: "neon",
       eyebrow: "De opening",
       title: "Het casino krijgt deuren",
       art: "assets/games/start.webp",
@@ -97,7 +115,7 @@ window.STORY = {
       facts: [
         { value: "3 juli 2026", label: "Eerste Mini App-commit" },
         { value: "1 aug 2026", label: "Het casino vliegt écht los" },
-        { value: "1.506", label: "Commits inmiddels" },
+        { value: "1.506", label: "Commits inmiddels", celebrate: true },
         { value: "Lobby", label: "Tegels i.p.v. commando's" },
       ],
     },
@@ -106,6 +124,8 @@ window.STORY = {
     {
       id: "tafels",
       kicker: "03",
+      theme: "highroller",
+      entry: "gold",
       eyebrow: "De tafels",
       title: "Blackjack, poker en een jackpot die nooit valt",
       art: "assets/games/jackpot.webp",
@@ -116,7 +136,7 @@ window.STORY = {
         "[SCHRIJF HIER: de jackpot. Eén op 8.460 voor een suited blackjack, één op 9.150 voor een straight flush bij Jacks or Better. Iemand ooit gewonnen? Vertel het verhaal.]",
       ],
       facts: [
-        { value: "1 op 8.460", label: "Suited blackjack-jackpot" },
+        { value: "1 op 8.460", label: "Suited blackjack-jackpot", egg: "gold" },
         { value: "1 op 9.150", label: "Straight flush (JoB)" },
         { value: "1 op 3.590", label: "Straight flush+ (UTH)" },
         { value: "0,05 → 0,01 GC", label: "Jackpot-buy-in ging omlaag" },
@@ -128,6 +148,8 @@ window.STORY = {
     {
       id: "lounge",
       kicker: "04",
+      theme: "arcade",
+      entry: "arcade",
       eyebrow: "De lounge & arcade",
       title: "Toen er ineens een speeltuin naast het casino kwam",
       art: "assets/games/background-night.webp",
@@ -151,6 +173,9 @@ window.STORY = {
     {
       id: "waanzin",
       kicker: "05",
+      theme: "glitch",
+      entry: "explosion",
+      artEgg: "boom",
       eyebrow: "De waanzin",
       title: "Twee spellen op één dag",
       art: "assets/cards/geurt-wint.jpg",
@@ -161,7 +186,7 @@ window.STORY = {
         "[SCHRIJF HIER: de waanzin van de balansupdates — Foil, stempels, jokers, een payout-cap van 2.500 GC. En de halving, de gouden raket, de bagholders.]",
       ],
       facts: [
-        { value: "37 commits", label: "Op 20 september 2026" },
+        { value: "37 commits", label: "Op 20 september 2026", celebrate: true },
         { value: "Jesters", label: "Voorheen 'Vega's Gambit'" },
         { value: "2.500 GC", label: "Jesters payout-cap" },
         { value: "27 → 30", label: "Joker-pool groeide" },
@@ -174,6 +199,8 @@ window.STORY = {
     {
       id: "toekomst",
       kicker: "06",
+      theme: "blueprint",
+      entry: "blueprint",
       eyebrow: "Wat komt er nog",
       title: "De speeltuin raakt nooit af",
       art: "assets/cards/platzak.jpg",
@@ -184,7 +211,7 @@ window.STORY = {
         "[SCHRIJF HIER: een dankwoord aan wie meehielp, testte, en vooral bleef spelen. Slotzinnen.]",
       ],
       facts: [
-        { value: "64.010", label: "Regels Python" },
+        { value: "64.010", label: "Regels Python", celebrate: true },
         { value: "43.718", label: "Regels TypeScript/Vue" },
         { value: "38", label: "Testbestanden" },
         { value: "29", label: "Design-docs" },
