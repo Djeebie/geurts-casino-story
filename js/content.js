@@ -24,14 +24,14 @@ window.STORY = {
   site: {
     title: "Geurt's Casino",
     subtitle: "Drie maanden speeltuin",
-    period: "10 juni — 29 september 2026",
+    period: "1 augustus — 30 oktober 2026",
     intro: "[SCHRIJF HIER: zet de toon. Eén of twee zinnen over een speeltuin die per ongeluk een casino werd.]",
     scrollHint: "Scroll voor het verhaal",
   },
 
   /* De grote cijfers meteen onder de titel. Pas gerust aan. */
   stats: [
-    { value: "111", label: "dagen" },
+    { value: "111", label: "dagen sinds de eerste commit" },
     { value: "1.506", label: "commits" },
     { value: "522", label: "bestanden" },
     { value: "3", label: "committers" },
@@ -59,8 +59,8 @@ window.STORY = {
       artEgg: "dust",
       eyebrow: "Proloog",
       title: "d'n Ouden Geurtbot",
-      art: "assets/cards/genaaid.jpg",
-      artAlt: "Joker-kaart 'genaaid'",
+      art: "assets/cards/in-memoriam.jpg",
+      artAlt: "Telegram-bericht met een in-memoriam-monument voor GeurtBot (1 feb 2016 – 28 nov 2022)",
       artCaption: "† 28 november 2022 — hij werd 6,5 jaar.",
       prose: [
         "[Op 28 november 2022 blies d'n Ouden Geurtbot zijn laatste adem uit. Hij werd 6,5 jaar. Toch vrij oud voor een bot.]",
