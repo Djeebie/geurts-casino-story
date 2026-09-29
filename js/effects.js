@@ -24,12 +24,12 @@
 
   /* Lees de effectkleuren (--fx-1/2/3) van een element of zijn ouders. */
   function themeColors(el) {
-    var node = el && el.closest ? el.closest(".scene, .hero, .outro") : null;
+    var node = el && el.closest ? el.closest(".chapter, .hero, .outro") : null;
     if (!node) node = document.documentElement;
     var styles = getComputedStyle(node);
-    var colors = ["--fx-1", "--fx-2", "--fx-3"]
+    var colors = ["--theme-fx-1", "--theme-fx-2", "--theme-fx-3"]
       .map(function (name) {
-        return styles.getPropertyValue(name).trim();
+        return styles.getPropertyValue(name).trim() || styles.getPropertyValue(name.replace("--theme-", "--")).trim();
       })
       .filter(Boolean);
     return colors.length ? colors : FALLBACK;
@@ -48,11 +48,11 @@
     var colors = opts.colors || themeColors(el);
     var origin = opts.origin || { x: 0.5, y: 0.4 };
     confetti({
-      particleCount: scale(opts.count || 90),
-      spread: opts.spread || 75,
-      startVelocity: opts.velocity || 42,
-      scalar: narrow ? 0.8 : 1,
-      ticks: opts.ticks || 220,
+      particleCount: scale(opts.count || 60),
+      spread: opts.spread || 68,
+      startVelocity: opts.velocity || 36,
+      scalar: narrow ? 0.8 : 0.95,
+      ticks: opts.ticks || 200,
       gravity: opts.gravity != null ? opts.gravity : 1,
       origin: origin,
       colors: colors,
@@ -78,10 +78,10 @@
         disableForReducedMotion: true,
       });
     };
-    shoot(60, 120);
-    shoot(120, 120);
+    shoot(60, 80);
+    shoot(120, 80);
     setTimeout(function () {
-      shoot(90, 90);
+      shoot(90, 60);
     }, 180);
   }
 
@@ -155,7 +155,7 @@
         dust(el);
         break;
       case "gold":
-        burst(el, { count: 130, spread: 90, velocity: 48, colors: ["#e6c15a", "#f5d576", "#fff3c4", "#b8860b"] });
+        burst(el, { count: 90, spread: 80, velocity: 40, colors: ["#e6c15a", "#f5d576", "#fff3c4", "#b8860b"] });
         break;
       case "explosion":
         explosion(el);
@@ -164,16 +164,16 @@
         sideCannons(el);
         break;
       case "neon":
-        burst(el, { count: 120, spread: 100, velocity: 50 });
+        burst(el, { count: 80, spread: 90, velocity: 42 });
         break;
       case "arcade":
-        burst(el, { count: 120, spread: 110, velocity: 52, colors: ["#00e5ff", "#ff2d95", "#ffe14d", "#7cff6b", "#b18cff"] });
+        burst(el, { count: 80, spread: 100, velocity: 44, colors: ["#00e5ff", "#ff2d95", "#ffe14d", "#7cff6b", "#b18cff"] });
         break;
       case "blueprint":
-        burst(el, { count: 100, spread: 85, velocity: 44, colors: ["#eaf4ff", "#9fd0ff", "#4f9be0", "#ffffff"] });
+        burst(el, { count: 70, spread: 78, velocity: 38, colors: ["#eaf4ff", "#9fd0ff", "#4f9be0", "#ffffff"] });
         break;
       default:
-        burst(el, { count: 100, spread: 85 });
+        burst(el, { count: 70, spread: 78 });
     }
   }
 
