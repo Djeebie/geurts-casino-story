@@ -17,6 +17,13 @@
   gsap.registerPlugin(ScrollTrigger);
   document.documentElement.classList.add("gsap-on");
 
+  /* main.js zet .reveal (opacity:0) op dezelfde elementen die GSAP animeert.
+     GSAP's `from` eindigt op de *huidige* waarde, dus die 0 zou de animatie
+     vergiftigen (0 → 0). Haal de class weg: GSAP neemt de reveal over. */
+  gsap.utils.toArray(".reveal").forEach(function (node) {
+    node.classList.remove("reveal", "is-visible");
+  });
+
   var desktop = window.matchMedia("(min-width: 821px)").matches;
 
   /* ── Opening (hero) ─────────────────────────────────── */
