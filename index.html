@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Geurt's Casino — Drie maanden speeltuin</title>
+  <meta name="description" content="Een klein verhaal over drie maanden Geurt's Casino (speeltuin-bot)." />
+  <meta name="theme-color" content="#041f11" />
+  <link rel="icon" href="assets/cards/AS.png" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="progress" aria-hidden="true"><span id="progress-bar"></span></div>
+
+  <!-- Scroll-rail met hoofdstukstippen -->
+  <nav id="rail" class="rail" aria-label="Hoofdstukken"></nav>
+
+  <header class="hero" id="top">
+    <div class="hero__felt" aria-hidden="true"></div>
+    <div class="hero__cards" aria-hidden="true">
+      <img class="float-card float-card--a" src="assets/cards/AS.png" alt="" />
+      <img class="float-card float-card--b" src="assets/cards/KH.png" alt="" />
+      <img class="float-card float-card--c" src="assets/cards/QD.png" alt="" />
+    </div>
+
+    <div class="hero__inner">
+      <p class="hero__period" id="hero-period"></p>
+      <h1 class="hero__title" id="hero-title"></h1>
+      <p class="hero__subtitle" id="hero-subtitle"></p>
+      <p class="hero__intro" id="hero-intro"></p>
+      <ul class="stats" id="stats"></ul>
+    </div>
+
+    <a class="hero__scroll" href="#story" id="hero-scroll">
+      <span></span>
+    </a>
+  </header>
+
+  <main id="story" class="story"></main>
+
+  <footer class="outro">
+    <div class="outro__inner">
+      <h2 class="outro__title" id="outro-title"></h2>
+      <div class="outro__lines" id="outro-lines"></div>
+      <ul class="outro__credits" id="outro-credits"></ul>
+    </div>
+  </footer>
+
+  <script src="js/content.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
