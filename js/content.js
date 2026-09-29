@@ -35,7 +35,7 @@ window.STORY = {
     title: "Geurt's Casino",
     subtitle: "Drie maanden speeltuin",
     period: "1 augustus — 30 oktober 2026",
-    intro: "[SCHRIJF HIER: zet de toon. Eén of twee zinnen over een speeltuin die per ongeluk een casino werd.]",
+    intro: "Zaterdagochtend 8.03 uur. Vincent klikt op draw en verliest z'n eerste hand. Jacks or Better. En het casino was geopend. ",
     scrollHint: "Scroll voor het verhaal",
     heroArt: "assets/games/start.webp",
     heroArtAlt: "Startscherm van een speeltuinspel",
@@ -71,12 +71,12 @@ window.STORY = {
         },
         {
           type: "text",
-          text: "[Op 28 november 2022 blies d'n Ouden Geurtbot zijn laatste adem uit. Hij werd 6,5 jaar. Toch vrij oud voor een bot.]",
+          text: "Op 28 november 2022 blies d'n Ouden Geurtbot zijn laatste adem uit. Hij werd 6,5 jaar. Toch vrij oud voor een bot.",
           size: "long",
         },
         {
           type: "text",
-          text: "[SCHRIJF HIER: wat deed de oude bot, en waarom duurde het tot 2026 voor er een opvolger kwam?]",
+          text: "Wat weinig mensen weten is dat in de IT-wereld bots tot leven worden gebracht door baarbroeders. Dat zijn mensen die over heel moeilijke dingen kunnen nadenken, daarover in meerdere onbegrijpelijke talen kunnen schrijven en aan het eind doet je computer het niet. Maar goed. Onze eigen baarbroeders Vincent, Johannes en Merwin kregen ook zo'n ding aan de praat en daar hebben we toch veel plezier van gehad. Lekker inleveren met highcardje, verouderde adressen opvragen en toch even spieken hoe dat ene kind van dingetje ook alweer heette.",
           size: "short",
         },
         {
@@ -93,8 +93,90 @@ window.STORY = {
 
     /* ───────────────────────── 01 ───────────────────────── */
     {
-      id: "begin",
+      id: "developer",
       kicker: "01",
+      eyebrow: "Tussenspel",
+      title: "Enter Won Dip Syk",
+      theme: "blueprint",
+      entry: "blueprint",
+      blocks: [
+        {
+          type: "text",
+          text: "[SCHRIJF HIER: korte intro — wie is dit, en waarom programmeert hij overal?]",
+          size: "short",
+        },
+        {
+          type: "image",
+          src: "assets/pics/won-dip-syk-amersfoort.jpg",
+          alt: "AI-beeld: de developer werkt op een laptop aan een gracht met boten en botenhuizen",
+          caption: "[SCHRIJF HIER: onderschrift bij de gracht-foto]",
+          variant: "full",
+        },
+        {
+          type: "text",
+          text: "[SCHRIJF HIER: korte regel tussen de foto's.]",
+          size: "short",
+        },
+        {
+          type: "image",
+          src: "assets/pics/won-dip-syk-bobslee.jpg",
+          alt: "AI-beeld: de developer programmeert op een laptop in een olympische bobslee op de ijsbaan",
+          caption: "[SCHRIJF HIER: onderschrift bij de bobslee-foto]",
+          variant: "full",
+          egg: "boom",
+        },
+        {
+          type: "text",
+          text: "[SCHRIJF HIER: korte regel tussen de foto's.]",
+          size: "short",
+        },
+        {
+          type: "image",
+          src: "assets/pics/won-dip-syk-desk.jpg",
+          alt: "AI-beeld: de developer achter een bureau met zes monitoren in de nacht",
+          caption: "[SCHRIJF HIER: onderschrift bij de nachtelijke bureau-foto]",
+          variant: "full",
+        },
+        {
+          type: "text",
+          text: "[SCHRIJF HIER: korte regel tussen de foto's.]",
+          size: "short",
+        },
+        {
+          type: "image",
+          src: "assets/pics/won-dip-syk-festival.jpg",
+          alt: "AI-beeld: de developer codeert op vier laptops op een picknickkleed op een lampionsfestival",
+          caption: "[SCHRIJF HIER: onderschrift bij de festival-foto]",
+          variant: "full",
+        },
+        {
+          type: "text",
+          text: "[SCHRIJF HIER: korte regel tussen de foto's.]",
+          size: "short",
+        },
+        {
+          type: "image",
+          src: "assets/pics/won-dip-syk-babi.jpg",
+          alt: "AI-beeld: de developer loopt met een infuus van ijsthee door een avondmarkt",
+          caption: "[SCHRIJF HIER: onderschrift bij de markt-foto]",
+          variant: "full",
+        },
+        {
+          type: "facts",
+          facts: [
+            { value: "5", label: "Plekken" },
+            { value: "0", label: "Slaap" },
+            { value: "∞", label: "Koffie", celebrate: true },
+            { value: "24/7", label: "Online" },
+          ],
+        },
+      ],
+    },
+
+    /* ───────────────────────── 02 ───────────────────────── */
+    {
+      id: "begin",
+      kicker: "02",
       eyebrow: "Het begin",
       title: "HIGHCARDJE",
       theme: "klassiek",
@@ -129,10 +211,10 @@ window.STORY = {
       ],
     },
 
-    /* ───────────────────────── 02 ───────────────────────── */
+    /* ───────────────────────── 03 ───────────────────────── */
     {
       id: "opening",
-      kicker: "02",
+      kicker: "03",
       eyebrow: "De opening",
       title: "Het casino krijgt deuren",
       theme: "neon",
@@ -167,10 +249,10 @@ window.STORY = {
       ],
     },
 
-    /* ───────────────────────── 03 ───────────────────────── */
+    /* ───────────────────────── 04 ───────────────────────── */
     {
       id: "tafels",
-      kicker: "03",
+      kicker: "04",
       eyebrow: "De tafels",
       title: "Blackjack, poker en een jackpot die nooit valt",
       theme: "highroller",
@@ -206,10 +288,10 @@ window.STORY = {
       ],
     },
 
-    /* ───────────────────────── 04 ───────────────────────── */
+    /* ───────────────────────── 05 ───────────────────────── */
     {
       id: "lounge",
-      kicker: "04",
+      kicker: "05",
       eyebrow: "De lounge & arcade",
       title: "Toen er ineens een speeltuin naast het casino kwam",
       theme: "arcade",
@@ -259,10 +341,10 @@ window.STORY = {
       ],
     },
 
-    /* ───────────────────────── 05 ───────────────────────── */
+    /* ───────────────────────── 06 ───────────────────────── */
     {
       id: "waanzin",
-      kicker: "05",
+      kicker: "06",
       eyebrow: "De waanzin",
       title: "Twee spellen op één dag",
       theme: "glitch",
@@ -300,10 +382,10 @@ window.STORY = {
       ],
     },
 
-    /* ───────────────────────── 06 ───────────────────────── */
+    /* ───────────────────────── 07 ───────────────────────── */
     {
       id: "toekomst",
-      kicker: "06",
+      kicker: "07",
       eyebrow: "Wat komt er nog",
       title: "De speeltuin raakt nooit af",
       theme: "blueprint",
