@@ -59,7 +59,7 @@ window.STORY = {
       artEgg: "dust",
       eyebrow: "Proloog",
       title: "d'n Ouden Geurtbot",
-      art: "assets/cards/in-memoriam.jpg",
+      art: "assets/cards/in-memoriam.webp",
       artAlt: "Telegram-bericht met een in-memoriam-monument voor GeurtBot (1 feb 2016 – 28 nov 2022)",
       artCaption: "† 28 november 2022 — hij werd 6,5 jaar.",
       prose: [
