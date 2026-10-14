@@ -136,8 +136,15 @@
   document.getElementById("hero-title").textContent = site.title || "";
   document.getElementById("hero-subtitle").textContent = site.subtitle || "";
   var heroIntro = document.getElementById("hero-intro");
-  heroIntro.textContent = site.intro || "";
-  if (isPlaceholder(site.intro)) heroIntro.classList.add("is-placeholder");
+  var introParts = Array.isArray(site.intro)
+    ? site.intro
+    : String(site.intro == null ? "" : site.intro).split(/\n{2,}/);
+  introParts.forEach(function (part) {
+    heroIntro.appendChild(
+      el("p", isPlaceholder(part) ? "is-placeholder" : null, part)
+    );
+  });
+  if (introParts.some(isPlaceholder)) heroIntro.classList.add("is-placeholder");
 
   if (site.heroArt) {
     var heroArt = document.getElementById("hero-art");
@@ -259,7 +266,9 @@
           }
         });
       },
-      { threshold: 0.35 }
+      /* Vuur zodra de kop van een hoofdstuk in beeld komt. Bewust géén
+         hoge threshold: die is op hele (lange) hoofdstukken onbereikbaar. */
+      { threshold: 0, rootMargin: "0px 0px -30% 0px" }
     );
     chapterNodes.forEach(function (c) {
       effectObserver.observe(c.node);

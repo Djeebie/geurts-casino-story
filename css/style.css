@@ -257,6 +257,14 @@ a {
   color: var(--muted);
 }
 
+.hero__intro p {
+  margin: 0 0 0.75em;
+}
+
+.hero__intro p:last-child {
+  margin-bottom: 0;
+}
+
 .hero__intro.is-placeholder {
   color: color-mix(in srgb, var(--accent) 65%, transparent);
   font-style: italic;
